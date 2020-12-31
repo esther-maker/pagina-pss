@@ -18,11 +18,16 @@ if(strlen($_POST['Usuario']) >= 1 && strlen($_POST['Contraseña']) >= 1){
   $Verificacion = mysqli_num_rows($Consulta);
 
   if($Verificacion == 1){
+    session_start();
+    $_SESSION['user'] = $Usuario;
+  
     echo '
        <script>
+          
          alert("Ha ingresado");
-         window.location.replace("princ.html");
+         window.location.replace("princ.php");
        </script>
+       
     ';
   }
 

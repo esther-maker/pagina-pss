@@ -1,3 +1,11 @@
+<?php
+     session_start();
+     if(isset($_GET['out'])) {
+        
+         session_destroy();
+         header("Refresh:0; url=princ.php");
+     }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -56,10 +64,29 @@
           <div class="collapse navbar-collapse">
                <ul class="nav navbar-nav navbar-right">
                     <li><a href="#home" class="smoothScroll">Inicio</a></li>
-                    <li><a href="loginvista.php" class="smoothScroll">Iniciar sesión</a></li>
                     <li><a href="#contact" class="smoothScroll">Contacto</a></li>  
-                    <li><a href="" class="smoothScroll">.</a></li>
+                    <?php
+                        
+                         if(isset($_SESSION['user'])) {
+                              $user = $_SESSION['user'];
+                              echo  "<li><a href='' class='smoothScroll'> $user</a></li>";
+                        
+                             
+                         } else {
+                              echo '<li><a href="/" class="smoothScroll">Iniciar sessión</a></li>';
+                         }
+                        
+                          
+                         ?>
+                  
+                    <?php
+                         if(isset($_SESSION['user'])) {
+                              echo '<li><a href="/princ.php?out=3232" class="smoothScroll">Cerrar sessión</a></li>';
+                         }
+                    ?>
+                   
                </ul>
+             
           </div>
 
      </div>

@@ -1,3 +1,16 @@
+<?php
+   
+
+    if(isset($_SESSION['user'] )) {
+        echo '
+       <script>
+
+         window.location.replace("princ.php");
+       </script>
+       
+    ';
+    }
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -36,6 +49,7 @@
     </form>
     <?php
     include("conexion_db.php");
+        
     ?>
 </body>
 </html>
